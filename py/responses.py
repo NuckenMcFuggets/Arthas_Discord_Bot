@@ -4,7 +4,7 @@ import random
 def handle_response(message) -> str:
     p_message = message.lower()
 
-    if(p_message == 'hello'):
+    if(p_message == '!hello'):
         return 'THIS WHOLE DISCORD MUST BE PURGED.'
     
 
