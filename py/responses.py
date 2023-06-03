@@ -2,7 +2,7 @@ import random
 
 
 def handle_response(message) -> str:
-    p_message = message.upper()
+    p_message = message.lower()
 
     if(p_message == 'hello'):
         return 'THIS WHOLE DISCORD MUST BE PURGED.'
@@ -14,3 +14,7 @@ def handle_response(message) -> str:
 
     if(p_message == '!help'):
         return "`this is a help message`"
+    
+
+
+    return "I didn\'t understand what you wrote"
