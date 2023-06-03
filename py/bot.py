@@ -53,10 +53,11 @@ def run_bot():
     client.run(TOKEN)
 
 
-async def voice_bot():
-    
+def voice_bot():
+
     TOKEN = bot_token.TOKEN
-    client = commands.Bot(command_prefix = '!')
+    intents = discord.Intents.default()
+    client = commands.Bot(command_prefix = '.', intents=intents)
 
     @client.event
     async def on_ready():
