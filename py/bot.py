@@ -1,6 +1,8 @@
 import discord
+from discord.ext import commands
 import responses
 import bot_token
+
 
 
 async def send_message(message, user_message, is_private):
@@ -14,16 +16,19 @@ async def send_message(message, user_message, is_private):
 
 
 def run_bot():
+
     TOKEN = bot_token.TOKEN
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents=intents)
 
 
+
+
     @client.event
     async def on_ready():
         print(f'{client.user} is now running!')
-
+        
 
     @client.event
     async def on_message(message):
@@ -41,5 +46,25 @@ def run_bot():
             await send_message(message,user_message, is_private=True)
         else:
             await send_message(message,user_message, is_private=False)
+
+
+
+
+    client.run(TOKEN)
+
+
+async def voice_bot():
+    
+    TOKEN = bot_token.TOKEN
+    client = commands.Bot(command_prefix = '!')
+
+    @client.event
+    async def on_ready():
+        print("Voice bot running")
+
+
+    @client.command()
+    async def hello(ctx):
+        await ctx.send("hello I am the youtube bot")
 
     client.run(TOKEN)
