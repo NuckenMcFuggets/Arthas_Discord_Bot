@@ -52,34 +52,3 @@ def run_bot():
 
     client.run(TOKEN)
 
-
-def voice_bot():
-
-    TOKEN = bot_token.TOKEN
-    intents = discord.Intents.all()
-    client = commands.Bot(command_prefix = '!', intents=intents)
-
-    @client.event
-    async def on_ready():
-        print(f'{client.user} is now running!')
-
-    @client.command(pass_context=True)
-    async def join(ctx):
-        if(ctx.author.voice):
-            channel = ctx.message.author.voice.channel
-            await channel.connect()
-        else:
-            await ctx.send("Join a voice channel to run this command")
-
-    @client.command(pass_context = True)
-    async def leave(ctx):
-        if(ctx.voice_client):
-            channel = ctx.guild.voice_client
-            await channel.disconnect()
-            await ctx.send("left voice channel")
-        else:
-            await ctx.send("Oops, I am not in a voice channel")
-    
-
-
-    client.run(TOKEN)
